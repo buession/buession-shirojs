@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>buession shirojs</title>
+  </head>
+  <body>
+    <script src="../dist/shirojs.umd.js"></script>
+    <script type="text/javascript">
+      function Principal(){
+        this.id = '1';
+      }
+      Principal.prototype.getId = function(){
+        return this.id;
+      }
+      Principal.prototype.getRoles = function(){
+        return ["admin", "admin1"];
+      }
+      Principal.prototype.getPermissions = function(){
+        return ["user:add", "user:edit"];
+      }
+      var shiro = new Shiro(new Principal());
+      console.log(shiro.hasRole("admin"))
+      console.log(shiro.lacksRole("admin"))
+      console.log(shiro.lacksRole("admin2"))
+      console.log(shiro.hasAnyRole(["admin", "admin1", "admin2"]))
+      console.log(shiro.hasRolesAll(["admin", "admin1", "admin2"]))
+    </script>
+  </body>
+</html>

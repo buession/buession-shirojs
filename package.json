@@ -1,0 +1,73 @@
+{
+  "name": "buession-shirojs",
+  "alias": "shirojs",
+  "version": "v1.0.0",
+  "description": "A security framework for JavaScript or TypeScript.",
+  "homepage": "https://github.com/buession/buession-shirojs",
+  "author": {
+    "name": "yong.teng",
+    "email": "webmaster@buession.com"
+  },
+  "copyright": "Buession.com Inc.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buession/buession-shirojs"
+  },
+  "bugs": "https://github.com/buession/buession-shirojs/issues",
+  "private": false,
+  "prototype": "Shiro",
+  "scripts": {
+    "build": "npm cache clean --force && rollup -c build/rollup.config.js",
+    "lint": "eslint -c ./.eslintrc.js './{src,scripts,build}/**/*.{js,ts,tsx}'",
+    "release": "yarn build && yarn publishing"
+  },
+  "keywords": [
+    "buession",
+    "shiro",
+    "permission",
+    "security"
+  ],
+  "source": [
+    "src/index.ts"
+  ],
+  "main": "src/index.ts",
+  "types": "src/index.d.ts",
+  "typings": "src/index.d.ts",
+  "module": "es/index.es.js",
+  "unpkg": "dist/shirojs.min.js",
+  "files": [
+    "src/",
+    "dist/"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.0",
+    "@babel/plugin-syntax-jsx": "^7.16.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@types/webpack-env": "^1.16.3",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^7.0.0",
+    "gensync": "^1.0.0-beta.2",
+    "rollup": "^2.60.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.1",
+    "typescript": "~4.1.5"
+  },
+  "bundleDependencies": false,
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "package.json": "sort-package-json"
+  }
+}
