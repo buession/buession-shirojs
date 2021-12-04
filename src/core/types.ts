@@ -1,3 +1,6 @@
+export type T_STRING = string | null | undefined;
+export type T_STRING_ARRAY = string[] | null | undefined;
+
 export interface Principal {
 
 	/**
@@ -13,7 +16,7 @@ export interface Principal {
 	 * @param id
 	 * 		用户 ID
 	 */
-	setId(id:string): void,
+	setId(id: string): void,
 
 	/**
 	 * 返回用户角色名称列表
@@ -28,7 +31,7 @@ export interface Principal {
 	 * @param roleNames
 	 * 		用户角色名称列表
 	 */
-	setRoles(roleNames:string[]): void,
+	setRoles(roleNames: string[]): void,
 
 	/**
      * 添加用户角色
@@ -36,7 +39,7 @@ export interface Principal {
 	 * @param roleName
 	 * 		用户角色名称
 	 */
-	addRole(roleName:string): void,
+	addRole(roleName: string): void,
 
 	/**
      * 批量添加用户角色
@@ -44,7 +47,7 @@ export interface Principal {
 	 * @param roleNames
 	 * 		用户角色名称列表
 	 */
-	addRoles(roleNames:string[]): void,
+	addRoles(roleNames: string[]): void,
 
 	/**
 	 * 返回用户权限列表
@@ -59,7 +62,7 @@ export interface Principal {
 	 * @param permissions
 	 * 		用户权限列表
 	 */
-	setPermissions(permissions:string[]): void,
+	setPermissions(permissions: string[]): void,
 
 	/**
      * 添加用户权限
@@ -67,7 +70,7 @@ export interface Principal {
 	 * @param permission
 	 * 		用户权限
 	 */
-	addPermission(permission:string): void,
+	addPermission(permission: string): void,
 
 	/**
      * 批量添加用户权限
@@ -75,10 +78,10 @@ export interface Principal {
 	 * @param permissions
 	 * 		用户权限列表
 	 */
-	addPermissions(permissions:string[]): void
+	addPermissions(permissions: string[]): void
 }
 
-export interface Shiro {
+export interface IShiro {
 	
 	/**
 	 * 验证是否为已认证通过的用户，不包含已记住的用户，这是与 isUser 标签方法的区别所在
@@ -116,7 +119,7 @@ export interface Shiro {
 	 *
 	 * @return 用户是否具备某角色
 	 */
-	hasRole(roleName:string): boolean;
+	hasRole(roleName: string): boolean;
 
 	/**
 	 * 验证用户是否不具备某角色，与 hasRole 逻辑相反
@@ -126,7 +129,7 @@ export interface Shiro {
 	 *
 	 * @return 用户是否不具备某角色
 	 */
-	lacksRole(roleName:string): boolean;
+	lacksRole(roleName: string): boolean;
 
 	/**
 	 * 验证用户是否具有以下任意一个角色
@@ -136,17 +139,17 @@ export interface Shiro {
 	 *
 	 * @return 用户是否具有以下任意一个角色
 	 */
-	hasAnyRole(roleNames:string[]): boolean;
+	hasAnyRole(roleNames: string[]): boolean;
 
 	/**
-	 * 验证用户是否具有以下所有角色。
+	 * 验证用户是否具有以下所有角色
 	 *
 	 * @param roleNames
 	 * 		角色列表
 	 *
 	 * @return 用户是否具有以下所有角色
 	 */
-	hasRolesAll(roleNames:string[]): boolean;
+	hasRolesAll(roleNames: string[]): boolean;
 
 	/**
 	 * 验证用户是否具备某权限
@@ -156,7 +159,7 @@ export interface Shiro {
 	 *
 	 * @return 用户是否具备某权限
 	 */
-	hasPermission(permission:string): boolean;
+	hasPermission(permission: string): boolean;
 
 	/**
 	 * 验证用户是否不具备某权限，与 hasPermission 逻辑相反
@@ -166,7 +169,7 @@ export interface Shiro {
 	 *
 	 * @return 用户是否不具备某权限
 	 */
-	lacksPermission(permission:string): boolean;
+	lacksPermission(permission: string): boolean;
 
 	/**
 	 * 验证用户是否具有以下任意一个权限
@@ -176,7 +179,7 @@ export interface Shiro {
 	 *
 	 * @return 用户是否具有以下任意一个权限
 	 */
-	hasAnyPermission(permissions:string[]): boolean;
+	hasAnyPermission(permissions: string[]): boolean;
 
 	/**
 	 * 验证用户是否具有以下所有权限
@@ -186,6 +189,6 @@ export interface Shiro {
 	 *
 	 * @return 用户是否具有以下所有权限
 	 */
-	hasPermissionsAll(permissions:string[]): boolean;
+	hasPermissionsAll(permissions: string[]): boolean;
 
 }

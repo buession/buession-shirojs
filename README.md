@@ -2,10 +2,7 @@
 <div align="center">
   <p align="center">Typescript 或者 JavaScript 的权限验证库</p>
   <a href="https://codecov.io/github/buession/buession-shirojs?branch=master">
-    <img
-      src="https://img.shields.io/codecov/c/github/buession/buession-shirojs?token=NW2XVQWGPP"
-      alt="Coverage Status"
-    />
+    <img src="https://img.shields.io/codecov/c/github/buession/buession-shirojs?token=NW2XVQWGPP" alt="Coverage Status" />
   </a>
   <a href="https://www.npmjs.com/package/buession-shirojs">
     <img src="https://img.shields.io/bundlephobia/minzip/buession-shirojs/latest" alt="Size" />
@@ -60,9 +57,9 @@ yarn add buession-shirojs
 ```vue
 <template>
   <div>
-    <div v-if="shiro.hasRole('admin)">Admin</div>
+    <div v-if="shiro.hasRole('admin')">Admin</div>
     <div v-if="shiro.hasPermission('user:edit')">Edit</div>
-    <div v-if="shiro.hasPermissions('user:add', 'user:edit')">Action</div>
+    <div v-if="shiro.hasPermissions(['user:add', 'user:edit'])">Action</div>
   </div>
 </template>
 

@@ -1,5 +1,7 @@
-import { ShiroImpl as Shiro } from './shiro';
+import { IShiro } from './shiro';
 
-export declare const Shiro: ShiroImpl;
+export { Principal } from './core/types';
+
+export declare const Shiro: IShiro;
 
 export default Shiro;

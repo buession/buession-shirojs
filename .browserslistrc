@@ -1,3 +1,11 @@
 >= 1%
 last 2 versions
+Explorer >= 8
+Edge >= 12
+Firefox >= 21
+Chrome >= 23
+Safari >= 10
+Opera >= 10
+Android >= 3
+IOS >= 7
 not dead

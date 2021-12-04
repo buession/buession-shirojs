@@ -1,13 +1,10 @@
-import { Principal, Shiro } from './core/types'
-
+import { ALL_PERMISSION } from './core/constants'
+import { Principal, IShiro } from './core/types'
 import { hasAny, hasAll } from './utils/common'
 
-export class ShiroImpl implements Shiro {
+export class Shiro implements IShiro {
 
-	private readonly $principal:Principal;
-
-	constructor(public principal:Principal) {
-		this.$principal = principal;
+	constructor(public readonly principal: Principal) {
 	}
 	
 	/**
@@ -16,7 +13,7 @@ export class ShiroImpl implements Shiro {
 	 * @return 用户是否已通过认证
 	*/
 	isAuthenticated(): boolean {
-		return this.$principal !== null;
+		return this.principal !== null;
 	}
 
     /**
@@ -34,7 +31,7 @@ export class ShiroImpl implements Shiro {
 	 * @return 用户是否为访客
 	 */
 	isGuest(): boolean {
-		return this.$principal === null;
+		return this.principal === null;
 	}
 
     /**
@@ -43,7 +40,7 @@ export class ShiroImpl implements Shiro {
 	 * @return 用户是否认证通过或已记住的用户
 	 */
 	isUser(): boolean {
-		return this.$principal !== null;
+		return this.principal !== null;
 	}
 
 	/**
@@ -54,8 +51,8 @@ export class ShiroImpl implements Shiro {
 	 *
 	 * @return 用户是否具备某角色
 	 */
-	hasRole(roleName:string): boolean {
-		return this.isAuthenticated() && hasAny(this.$principal.getRoles(), roleName);
+	hasRole(roleName: string): boolean {
+		return this.isAuthenticated() && hasAny(this.principal.getRoles(), roleName);
 	}
 
 	/**
@@ -66,7 +63,7 @@ export class ShiroImpl implements Shiro {
 	 *
 	 * @return 用户是否不具备某角色
 	 */
-	lacksRole(roleName:string): boolean {
+	lacksRole(roleName: string): boolean {
 		return this.hasRole(roleName) === false;
 	}
 
@@ -78,13 +75,13 @@ export class ShiroImpl implements Shiro {
 	 *
 	 * @return 用户是否具有以下任意一个角色
 	 */
-	hasAnyRole(roleNames:string[]): boolean {
+	hasAnyRole(roleNames: string[]): boolean {
 		if (this.isAuthenticated() == false) {
 			return false;
 		}
 
 		for (let roleName of roleNames) {
-			if (hasAny(this.$principal.getRoles(), roleName)) {
+			if (hasAny(this.principal.getRoles(), roleName)) {
 				return true;
 			}
 		}
@@ -100,8 +97,8 @@ export class ShiroImpl implements Shiro {
 	 *
 	 * @return 用户是否具有以下所有角色
 	 */
-	hasRolesAll(roleNames:string[]): boolean {
-		return this.isAuthenticated() && hasAll(this.$principal.getRoles(), roleNames);
+	hasRolesAll(roleNames: string[]): boolean {
+		return this.isAuthenticated() && hasAll(this.principal.getRoles(), roleNames);
 	}
 
 	/**
@@ -112,8 +109,8 @@ export class ShiroImpl implements Shiro {
 	 *
 	 * @return 用户是否具备某权限
 	 */
-	hasPermission(permission:string): boolean {
-		return this.isAuthenticated() && hasAny(this.$principal.getPermissions(), permission);
+	hasPermission(permission: string): boolean {
+		return this.isAuthenticated() && (hasAny(this.principal.getPermissions(), permission) || hasAny(this.principal.getPermissions(), ALL_PERMISSION));
 	}
 
 	/**
@@ -124,7 +121,7 @@ export class ShiroImpl implements Shiro {
 	 *
 	 * @return 用户是否不具备某权限
 	 */
-	lacksPermission(permission:string): boolean {
+	lacksPermission(permission: string): boolean {
 		return this.hasPermission(permission) === false;
 	}
 
@@ -136,13 +133,17 @@ export class ShiroImpl implements Shiro {
 	 *
 	 * @return 用户是否具有以下任意一个权限
 	 */
-	hasAnyPermission(permissions:string[]): boolean {
+	hasAnyPermission(permissions: string[]): boolean {
 		if (this.isAuthenticated() == false) {
 			return false;
 		}
 
+		if (hasAny(this.principal.getPermissions(), ALL_PERMISSION)) {
+			return true;
+		}
+
 		for (let permission of permissions) {
-			if (hasAny(this.$principal.getPermissions(), permission)) {
+			if (hasAny(this.principal.getPermissions(), permission)) {
 				return true;
 			}
 		}
@@ -158,8 +159,8 @@ export class ShiroImpl implements Shiro {
 	 *
 	 * @return 用户是否具有以下所有权限
 	 */
-	hasPermissionsAll(permissions:string[]): boolean {
-		return hasAll(this.$principal.getPermissions(), permissions);
+	hasPermissionsAll(permissions: string[]): boolean {
+		return hasAny(this.principal.getPermissions(), ALL_PERMISSION) || hasAll(this.principal.getPermissions(), permissions);
 	}
 
 }
