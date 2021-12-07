@@ -1,7 +1,7 @@
 {
   "name": "buession-shirojs",
   "alias": "shirojs",
-  "version": "v1.0.1",
+  "version": "v1.0.2",
   "description": "A security framework for JavaScript or TypeScript.",
   "homepage": "https://buession.github.io/buession-shirojs/",
   "author": {
@@ -34,7 +34,7 @@
   "main": "src/index.ts",
   "types": "src/index.d.ts",
   "typings": "src/index.d.ts",
-  "module": "es/index.es.js",
+  "module": "src/index.ts",
   "unpkg": "dist/shirojs.min.js",
   "files": [
     "src/",
