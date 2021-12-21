@@ -1,48 +1,63 @@
-import fs from 'fs'
-import path from 'path'
-import babel from 'rollup-plugin-babel'
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import fs from 'fs';
+import path from 'path';
+import babel from 'rollup-plugin-babel';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 import typescript2 from 'rollup-plugin-typescript2';
-import { camelCase } from 'lodash'
-import json from '@rollup/plugin-json'
-import { terser } from 'rollup-plugin-terser'
-import { name, alias, prototype, dependencies } from '../package.json'
+import { terser } from 'rollup-plugin-terser';
+import replace from '@rollup/plugin-replace';
+import { camelCase } from 'lodash';
 
+const pkg = require('../package.json');
 const base = path.resolve(__dirname, '..')
 const src = path.resolve(base, 'src')
 const dist = path.resolve(base, 'dist')
 
-const bannerComment = require('./comment')
+const date = new Date()
 
-const filename = alias
+const bannerComment = `/*!
+* Buession ${pkg.name} ${pkg.version}
+*
+* @link ${pkg.homepage}
+* @source ${pkg.repository.url}
+* @copyright @ 2020-${date.getFullYear()} ${pkg.copyright}
+* @license ${pkg.license}
+* @Build Time ${date.toUTCString()}
+*/
+`
 
-const externals = [...Object.keys(dependencies)]
+const filename = pkg.alias
+
+const externals = []
 const externalExcludes = []
 
 const resolveConfig = {
   external: []
 }
 const typescript2Config = {
-  tsconfigOverride: {
-    exclude: ['node_modules', '**/tests/**/*', 'example', 'script'],
-  },
   useTsconfigDeclarationDir: true
 }
 const babelConfig = {
   configFile: './babel.config.js',
+  runtimeHelpers: true,
   exclude: 'node_modules/**'
+}
+const replaceConfig = {
+  preventAssignment: true,
+  values: {
+    __VERSION__: pkg.version
+  }
 }
 
 // The base rollup configuration
 const baseConfig = {
   input: path.resolve(src, 'index.ts'),
   external: externals,
-  plugins: [resolve(resolveConfig), commonjs(), typescript2(typescript2Config), json(), babel(babelConfig)]
+  plugins: [resolve(resolveConfig), commonjs(), typescript2(typescript2Config), replace(replaceConfig), babel(babelConfig)]
 }
 const minifyConfig = {
   ...baseConfig,
-  plugins: [resolve(resolveConfig), commonjs(), typescript2(typescript2Config), json(), terser(), babel(babelConfig)]
+  plugins: [resolve(resolveConfig), commonjs(), typescript2(typescript2Config), replace(replaceConfig), terser(), babel(babelConfig)]
 }
 
 // Ensure dist directory exists
@@ -59,9 +74,10 @@ export default [
     external: externals.filter(dep => !externalExcludes.includes(dep)),
     output: {
       format: 'amd',
-      name: camelCase(alias),
+      name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.amd.js`),
       banner: bannerComment,
+      exports: 'named',
       sourcemap: true
     }
   },
@@ -73,9 +89,10 @@ export default [
     external: externals.filter(dep => !externalExcludes.includes(dep)),
     output: {
       format: 'amd',
-      name: camelCase(alias),
+      name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.amd.min.js`),
       banner: bannerComment,
+      exports: 'named',
       sourcemap: true
     }
   },
@@ -88,9 +105,10 @@ export default [
     external: externals.filter(dep => !externalExcludes.includes(dep)),
     output: {
       format: 'umd',
-      name: prototype,
+      name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.umd.js`),
       banner: bannerComment,
+      exports: 'named',
       sourcemap: true
     }
   },
@@ -102,9 +120,10 @@ export default [
     external: externals.filter(dep => !externalExcludes.includes(dep)),
     output: {
       format: 'umd',
-      name: prototype,
+      name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.umd.min.js`),
       banner: bannerComment,
+      exports: 'named',
       sourcemap: true
     }
   },
@@ -117,9 +136,10 @@ export default [
     external: externals.filter(dep => !externalExcludes.includes(dep)),
     output: {
       format: 'umd',
-      name: prototype,
+      name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.js`),
       banner: bannerComment,
+      exports: 'named',
       sourcemap: true
     }
   },
@@ -131,9 +151,10 @@ export default [
     external: externals.filter(dep => !externalExcludes.includes(dep)),
     output: {
       format: 'umd',
-      name: prototype,
+      name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.min.js`),
       banner: bannerComment,
+      exports: 'named',
       sourcemap: true
     }
   },
@@ -143,7 +164,7 @@ export default [
     ...baseConfig,
     output: {
       format: 'es',
-      name: camelCase(alias),
+      name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.esm.js`),
       banner: bannerComment,
       sourcemap: true
@@ -154,7 +175,7 @@ export default [
     ...minifyConfig,
     output: {
       format: 'es',
-      name: camelCase(alias),
+      name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.esm.min.js`),
       banner: bannerComment,
       sourcemap: true
@@ -169,9 +190,10 @@ export default [
     external: externals.filter(dep => !externalExcludes.includes(dep)),
     output: {
       format: 'iife',
-      name: prototype,
+      name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.iife.js`),
       banner: bannerComment,
+      exports: 'named',
       sourcemap: true
     }
   },
@@ -183,9 +205,10 @@ export default [
     external: externals.filter(dep => !externalExcludes.includes(dep)),
     output: {
       format: 'iife',
-      name: prototype,
+      name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.iife.min.js`),
       banner: bannerComment,
+      exports: 'named',
       sourcemap: true
     }
   },
@@ -195,23 +218,23 @@ export default [
     ...baseConfig,
     output: {
       format: 'cjs',
-      name: camelCase(alias),
-      file: path.resolve(dist, `${alias}.common.js`),
+      name: camelCase(pkg.alias),
+      file: path.resolve(dist, `${filename}.common.js`),
       banner: bannerComment,
       exports: 'named',
       sourcemap: true
     }
   },
-  // Minify Module Module Bundle Build
+  // Minify COMMONJS Module Bundle Build
   {
     ...minifyConfig,
     output: {
       format: 'cjs',
-      name: camelCase(alias),
-      file: path.resolve(dist, `${alias}.common.min.js`),
+      name: camelCase(pkg.alias),
+      file: path.resolve(dist, `${filename}.common.min.js`),
       banner: bannerComment,
       exports: 'named',
       sourcemap: true
     }
-  },
+  }
 ]

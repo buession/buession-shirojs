@@ -12,6 +12,8 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationDir": "./src",
     "sourceMap": true,
     "allowJs": true,
     "types": [
@@ -23,15 +25,22 @@
       ]
     },
     "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
+      "es5",
+      "es6",
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2018",
+      "esnext"
     ]
   },
   "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
+    "tests/**/*.js",
+    "tests/**/*.jsx",
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
