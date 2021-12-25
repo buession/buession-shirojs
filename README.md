@@ -11,13 +11,13 @@
     <img src="https://img.shields.io/npm/v/@buession/shiro" alt="Version" />
   </a>
   <a href="https://www.npmjs.com/package/@buession/shiro">
-    <img src="https://img.shields.io/github/languages/top/buession/buession-shiro" alt="Languages" />
+    <img src="https://img.shields.io/github/languages/top/buession/buession-shirojs" alt="Languages" />
   </a>
   <a href="https://www.npmjs.com/package/@buession/shiro">
     <img src="https://img.shields.io/npm/l/@buession/shiro" alt="License" />
   </a>
   <a href="https://github.com/buession/buession-shiro/stargazers">
-    <img src="https://img.shields.io/github/stars/buession/buession-shiro" alt="Star" />
+    <img src="https://img.shields.io/github/stars/buession/buession-shirojs" alt="Star" />
   </a>
   <a href="https://www.npmjs.com/package/buession-shiro">
     <img src="https://img.shields.io/npm/dm/@buession/shiro" alt="Download" />
