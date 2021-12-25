@@ -67,7 +67,7 @@ yarn add @buession/shiro
 import { defineComponent } from 'vue';
 export default defineComponent({
   setup() {
-  },
+  }
 });
 </script>
 ```
