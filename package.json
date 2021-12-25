@@ -1,7 +1,7 @@
 {
   "name": "@buession/shiro",
   "alias": "shiro",
-  "version": "v1.0.3",
+  "version": "v1.1.0",
   "description": "A security framework for JavaScript or TypeScript.",
   "homepage": "https://buession.github.io/buession-shirojs/",
   "author": {
@@ -17,7 +17,7 @@
   "bugs": "https://github.com/buession/buession-shirojs/issues",
   "private": false,
   "scripts": {
-    "build": "npm cache clean --force && rm -fR dist && find ./src -name '*.d.ts' | xargs rm -fR && rollup -c build/rollup.config.js",
+    "build": "npm cache clean --force && rm -fR ./dist/* && rollup -c ./rollup.config.js",
     "lint": "eslint -c ./.eslintrc.js './{src,scripts,build}/**/*.{js,ts,tsx}'",
     "release": "yarn build && yarn publish --access public"
   },
@@ -30,13 +30,13 @@
   "source": [
     "src/index.ts"
   ],
-  "main": "src/index.ts",
-  "types": "src/index.d.ts",
-  "typings": "src/index.d.ts",
-  "module": "src/index.ts",
+  "main": "dist/shiro.cjs.js",
+  "module": "dist/shiro.esm.js",
+  "types": "types/index.d.ts",
+  "typings": "types/index.d.ts",
   "unpkg": "dist/shiro.min.js",
   "files": [
-    "src/",
+    "types/",
     "dist/"
   ],
   "devDependencies": {

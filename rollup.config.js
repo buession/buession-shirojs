@@ -8,27 +8,27 @@ import { terser } from 'rollup-plugin-terser';
 import replace from '@rollup/plugin-replace';
 import { camelCase } from 'lodash';
 
-const pkg = require('../package.json');
-const base = path.resolve(__dirname, '..')
+const pkg = require('./package.json');
+const base = path.resolve(__dirname, '.')
 const src = path.resolve(base, 'src')
 const dist = path.resolve(base, 'dist')
 
 const date = new Date()
 
 const bannerComment = `/*!
-* Buession ${pkg.name} ${pkg.version}
-*
-* @link ${pkg.homepage}
-* @source ${pkg.repository.url}
-* @copyright @ 2020-${date.getFullYear()} ${pkg.copyright}
-* @license ${pkg.license}
-* @Build Time ${date.toUTCString()}
-*/
+ * Buession ${pkg.alias} ${pkg.version}
+ *
+ * @link ${pkg.homepage}
+ * @source ${pkg.repository.url}
+ * @copyright @ 2020-${date.getFullYear()} ${pkg.copyright}
+ * @license ${pkg.license}
+ * @Build Time ${date.toUTCString()}
+ */
 `
 
 const filename = pkg.alias
 
-const externals = []
+const externals = ['window']
 const externalExcludes = []
 
 const resolveConfig = {
@@ -163,10 +163,11 @@ export default [
   {
     ...baseConfig,
     output: {
-      format: 'es',
+      format: 'esm',
       name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.esm.js`),
       banner: bannerComment,
+      exports: 'named',
       sourcemap: true
     }
   },
@@ -174,10 +175,11 @@ export default [
   {
     ...minifyConfig,
     output: {
-      format: 'es',
+      format: 'esm',
       name: camelCase(pkg.alias),
       file: path.resolve(dist, `${filename}.esm.min.js`),
       banner: bannerComment,
+      exports: 'named',
       sourcemap: true
     }
   },
@@ -219,7 +221,7 @@ export default [
     output: {
       format: 'cjs',
       name: camelCase(pkg.alias),
-      file: path.resolve(dist, `${filename}.common.js`),
+      file: path.resolve(dist, `${filename}.cjs.js`),
       banner: bannerComment,
       exports: 'named',
       sourcemap: true
@@ -231,7 +233,7 @@ export default [
     output: {
       format: 'cjs',
       name: camelCase(pkg.alias),
-      file: path.resolve(dist, `${filename}.common.min.js`),
+      file: path.resolve(dist, `${filename}.cjs.min.js`),
       banner: bannerComment,
       exports: 'named',
       sourcemap: true
