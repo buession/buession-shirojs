@@ -72,6 +72,32 @@ export default defineComponent({
 </script>
 ```
 
+
+```javascript
+<script type="text/javascript">
+  function Principal(){
+    this.id = '1';
+  }
+
+  Principal.prototype.getId = function(){
+    return this.id;
+  }
+
+  Principal.prototype.getRoles = function(){
+    return ["admin", "admin1"];
+  }
+
+  Principal.prototype.getPermissions = function(){
+    return ["user:add", "user:edit"];
+  }
+
+  var shiro = new Shiro(new Principal());
+  if (shiro.hasRole("admin")) {
+    
+  }
+</script>
+```
+
 ## License
 
 [MIT License](https://github.com/buession/buession-shirojs/blob/master/LICENSE) © 2020-2021
