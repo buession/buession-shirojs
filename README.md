@@ -1,8 +1,14 @@
 <h1 align="center">Buession Shiro</h1>
 <div align="center">
   <p align="center">Typescript 或者 JavaScript 的权限验证库</p>
-  <a href="https://codecov.io/github/buession/buession-shiro?branch=master">
-    <img src="https://img.shields.io/codecov/c/github/buession/buession-shiro?token=NW2XVQWGPP" alt="Coverage Status" />
+  <a href="https://codecov.io/github/buession/buession-shirojs?branch=master">
+    <img src="https://img.shields.io/codecov/c/github/buession/buession-shirojs?token=tp73oo63nf" alt="Coverage Status" />
+  </a>
+  <a href="https://github.com/buession/buession-shirojs/actions/workflows/codecov.yml">
+    <img src="https://github.com/buession/buession-shirojs/actions/workflows/codecov.yml/badge.svg" alt="Codecov" />
+  </a>
+  <a href="https://github.com/buession/buession-shirojs/actions/workflows/codeql-analysis.yml">
+    <img src="https://github.com/buession/buession-shirojs/actions/workflows/codeql-analysis.yml/badge.svg" alt="CodeQL" />
   </a>
   <a href="https://www.npmjs.com/package/@buession/shiro">
     <img src="https://img.shields.io/bundlephobia/minzip/@buession/shiro/latest" alt="Size" />
@@ -16,11 +22,14 @@
   <a href="https://www.npmjs.com/package/@buession/shiro">
     <img src="https://img.shields.io/npm/l/@buession/shiro" alt="License" />
   </a>
-  <a href="https://github.com/buession/buession-shiro/stargazers">
+  <a href="https://github.com/buession/buession-shirojs/stargazers">
     <img src="https://img.shields.io/github/stars/buession/buession-shirojs" alt="Star" />
   </a>
-  <a href="https://www.npmjs.com/package/buession-shiro">
+  <a href="https://www.npmjs.com/package/@buession/shiro">
     <img src="https://img.shields.io/npm/dm/@buession/shiro" alt="Download" />
+  </a>
+  <a href="https://www.npmjs.com/package/@buession/shiro">
+    <img src="https://img.shields.io/snyk/vulnerabilities/npm/@buession/shiro" alt="Vulnerabilities" />
   </a>
 </div>
 
