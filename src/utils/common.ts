@@ -1,6 +1,4 @@
-import { T_STRING, T_STRING_ARRAY } from '../core/types';
-
-export const hasAny = (data: T_STRING_ARRAY, value: any): boolean => {
+export const hasAny = (data: string[] | null | undefined, value: any): boolean => {
 	if (data === null || data === undefined) {
 		return false;
 	}
@@ -8,12 +6,8 @@ export const hasAny = (data: T_STRING_ARRAY, value: any): boolean => {
 	return data.indexOf(value) >= 0;
 }
 
-export const hasAll = (data: T_STRING_ARRAY, values: any[]): boolean => {
-	if (data === null || data === undefined) {
-		return false;
-	}
-	
-	if (values === null || values === undefined) {
+export const hasAll = (data: string[] | null | undefined, values: any[] | null | undefined): boolean => {
+	if ((data === null || data === undefined) || (values === null || values === undefined)) {
 		return false;
 	}
 

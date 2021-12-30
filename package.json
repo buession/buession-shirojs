@@ -1,7 +1,7 @@
 {
   "name": "@buession/shiro",
   "alias": "shiro",
-  "version": "v1.1.0",
+  "version": "v1.1.1",
   "description": "A security framework for JavaScript or TypeScript.",
   "homepage": "https://buession.github.io/buession-shirojs/",
   "author": {
@@ -17,8 +17,8 @@
   "bugs": "https://github.com/buession/buession-shirojs/issues",
   "private": false,
   "scripts": {
-    "build": "npm cache clean --force && rm -fR ./dist/* && rollup -c ./rollup.config.js",
-    "lint": "eslint -c ./.eslintrc.js './{src,scripts,build}/**/*.{js,ts,tsx}'",
+    "build": "npm cache clean --force && rm -fR ./dist/* && rm -fR types && rollup -c ./rollup.config.js && mv ./dist/types ./",
+    "lint": "eslint -c ./.eslintrc.js './{src}/**/*.{js,ts,jsx,tsx}'",
     "codecov": "codecov",
     "release": "yarn build && yarn publish --access public"
   },
@@ -27,9 +27,6 @@
     "shiro",
     "permission",
     "security"
-  ],
-  "source": [
-    "src/index.ts"
   ],
   "main": "dist/shiro.cjs.js",
   "module": "dist/shiro.esm.js",
@@ -46,6 +43,7 @@
     "@babel/plugin-syntax-jsx": "^7.16.0",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-eslint": "^8.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-replace": "^3.0.0",
@@ -71,8 +69,5 @@
       "eslint --fix"
     ],
     "package.json": "sort-package-json"
-  },
-  "dependencies": {
-    "@rollup/plugin-eslint": "^8.0.1"
   }
 }

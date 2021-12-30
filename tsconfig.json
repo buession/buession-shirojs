@@ -5,7 +5,6 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
-    "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "skipLibCheck": true,
@@ -13,6 +12,12 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "suppressImplicitAnyIndexErrors": true,
+    "noEmit": true,
+    "noEmitOnError": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
     "declaration": true,
     "declarationDir": "./types",
     "sourceMap": true,
@@ -40,14 +45,12 @@
     "src/**/*.js",
     "src/**/*.jsx",
     "src/**/*.ts",
-    "src/**/*.tsx",
-    "tests/**/*.js",
-    "tests/**/*.jsx",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "src/**/*.tsx"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "types",
+    "dist",
+    "example"
   ]
 }
