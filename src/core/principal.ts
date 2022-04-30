@@ -4,7 +4,7 @@ export interface Principal {
 	 * 返回用户 ID
 	 * 
 	 * @return 用户 ID
-	*/
+	 */
 	getId(): string,
 
 	/**
@@ -19,7 +19,7 @@ export interface Principal {
 	 * 返回用户角色名称列表
 	 * 
 	 * @return 用户角色名称列表
-	*/
+	 */
 	getRoles(): string[],
 
 	/**
