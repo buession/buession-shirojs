@@ -7,19 +7,15 @@ export const hasAny = (data: string[] | null | undefined, value: any): boolean =
 }
 
 export const hasAll = (data: string[] | null | undefined, values: any[] | null | undefined): boolean => {
-	if ((data === null || data === undefined) || (values === null || values === undefined)) {
+	if ((data === null || data === undefined) || (values === null || values === undefined || values.length === 0)) {
 		return false;
 	}
 
-	if (values.length > 0) {
-		for (let i = 0; i < values.length; i++) {
-			if (data.indexOf(values[i]) < 0) {
-				return false;
-			}
+	for (let i = 0; i < values.length; i++) {
+		if (data.indexOf(values[i]) < 0) {
+			return false;
 		}
-
-		return true;
 	}
 
-	return false;
+	return true;
 }

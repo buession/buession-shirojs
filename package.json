@@ -1,9 +1,9 @@
 {
   "name": "@buession/shiro",
   "alias": "shiro",
-  "version": "v1.1.1",
+  "version": "v1.1.2",
   "description": "A security framework for JavaScript or TypeScript.",
-  "homepage": "https://buession.github.io/buession-shirojs/",
+  "homepage": "https://shirojs.buession.com/",
   "author": {
     "name": "yong.teng",
     "email": "webmaster@buession.com"

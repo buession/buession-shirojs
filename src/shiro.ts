@@ -116,7 +116,10 @@ export interface IShiro {
 
 export class Shiro implements IShiro {
 
-	constructor(private readonly principal: Principal) {
+	private readonly principal: Principal;
+
+	constructor(principal: Principal) {
+		this.principal = principal;
 	}
 	
 	/**
@@ -192,8 +195,8 @@ export class Shiro implements IShiro {
 			return false;
 		}
 
-		for (let roleName of roleNames) {
-			if (hasAny(this.principal.getRoles(), roleName)) {
+		for (let i = 0; i < roleNames.length; i++) {
+			if (hasAny(this.principal.getRoles(), roleNames[i])) {
 				return true;
 			}
 		}
@@ -254,8 +257,8 @@ export class Shiro implements IShiro {
 			return true;
 		}
 
-		for (let permission of permissions) {
-			if (hasAny(this.principal.getPermissions(), permission)) {
+		for (let i = 0; i < permissions.length; i++) {
+			if (hasAny(this.principal.getPermissions(), permissions[i])) {
 				return true;
 			}
 		}
@@ -272,7 +275,7 @@ export class Shiro implements IShiro {
 	 * @return 用户是否具有以下所有权限
 	 */
 	hasPermissionsAll(permissions: string[]): boolean {
-		return hasAny(this.principal.getPermissions(), ALL_PERMISSION) || hasAll(this.principal.getPermissions(), permissions);
+		return this.isAuthenticated() && (hasAny(this.principal.getPermissions(), ALL_PERMISSION) || hasAll(this.principal.getPermissions(), permissions));
 	}
 
 }
