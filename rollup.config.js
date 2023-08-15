@@ -33,6 +33,7 @@ const externals = ['window'];
 const externalExcludes = [];
 
 const plugins = [
+  eslint(),
   resolve({
     external: []
   }),

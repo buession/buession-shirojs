@@ -1,5 +1,5 @@
 import { Shiro } from './shiro';
-import { Principal } from './core/Principal';
+import { Principal } from './core/principal';
 
 export {
 	Principal,

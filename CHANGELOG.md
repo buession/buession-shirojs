@@ -1,5 +1,16 @@
 # 更新日志
 
+## [v1.2.0](https://github.com/buession/buession-shiro/releases/tag/1.2.0)（2023-08-15）
+
+### ⭐ 新特性
+
+- Shiro 支持传简单对象
+
+### 🎉 优化
+
+- 其它优化
+
+
 ## [v1.1.3](https://github.com/buession/buession-shiro/releases/tag/1.1.3)（2023-02-03）
 
 ### 🐞 BUG 修复

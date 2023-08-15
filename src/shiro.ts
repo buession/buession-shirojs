@@ -1,5 +1,5 @@
 import { ALL_PERMISSION } from './core/constants'
-import { Principal } from './core/principal'
+import { PrincipalObject, Principal, DefaultPrincipal } from './core/principal'
 import { hasAny, hasAll } from './utils/common'
 
 export interface IShiro {
@@ -118,10 +118,16 @@ export class Shiro implements IShiro {
 
 	private readonly principal: Principal;
 
-	constructor(principal: Principal) {
-		this.principal = principal;
+	constructor(principal: Principal | PrincipalObject) {
+		const $principal = principal as PrincipalObject;
+
+		if (typeof $principal.id === 'string' && Array.isArray($principal.roles) && Array.isArray($principal.permissions)) {
+			this.principal = new DefaultPrincipal($principal.id, $principal.roles, $principal.permissions);
+		} else {
+			this.principal = principal as Principal;
+		}
 	}
-	
+
 	/**
 	 * 验证是否为已认证通过的用户，不包含已记住的用户，这是与 isUser 标签方法的区别所在
 	 * 
