@@ -12,17 +12,31 @@ export const isUndefinedOrNull = (obj: any): boolean => {
 	return isUndefined(obj) || isNull(obj);
 }
 
-export const hasAny = (data: Oun<string[]>, value: any): boolean => {
-	return Array.isArray(data) && data.indexOf(value) >= 0;
+export const has = (data: Oun<string[]>, value: any): boolean => {
+	return Array.isArray(data) && data.includes(value);
+}
+
+export const hasAny = (data: Oun<string[]>, values: Oun<any[]>): boolean => {
+	if (Array.isArray(data) && (Array.isArray(values) && values.length > 0)) {
+		for (let i = 0; i < values.length; i++) {
+			if (data.includes(values[i])) {
+				return true;
+			}
+		}
+	}
+
+	return false;
 }
 
 export const hasAll = (data: Oun<string[]>, values: Oun<any[]>): boolean => {
 	if (Array.isArray(data) && (Array.isArray(values) && values.length > 0)) {
 		for (let i = 0; i < values.length; i++) {
-			if (data.indexOf(values[i]) >= 0) {
-				return true;
+			if (data.includes(values[i]) === false) {
+				return false;
 			}
 		}
+
+		return true;
 	}
 
 	return false;

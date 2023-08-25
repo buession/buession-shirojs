@@ -1,5 +1,16 @@
 # 更新日志
 
+## [v1.2.1](https://github.com/buession/buession-shiro/releases/tag/1.2.1)（2023-08-25）
+
+### 🐞 BUG 修复
+
+- 修复判断所有角色、所有权限未能判断全的 BUG
+
+### 🎉 优化
+
+- 内部优化
+
+
 ## [v1.2.0](https://github.com/buession/buession-shiro/releases/tag/1.2.0)（2023-08-15）
 
 ### ⭐ 新特性

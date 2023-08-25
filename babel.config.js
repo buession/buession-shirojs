@@ -1,23 +1,13 @@
-const presets = ['@babel/preset-env'];
-const plugins = [
-  '@babel/plugin-proposal-nullish-coalescing-operator',
-];
-
-const babelConfig = {
-  presets,
-  plugins,
-};
-
-if (process.env.NODE_ENV === 'test') {
-  babelConfig.plugins.push('@babel/plugin-transform-runtime');
-  babelConfig.targets = { node: 'current' };
-} else {
-  babelConfig.plugins.push([
-    '@babel/plugin-transform-runtime',
-    {
-      corejs: 3
-    }
-  ]);
+module.exports = {
+  presets: [
+    ['@babel/preset-env']
+  ],
+  plugins: [
+    [
+      '@babel/plugin-transform-runtime',
+      {
+        useESModules: true
+      }
+    ]
+  ]
 }
-
-module.exports = babelConfig;

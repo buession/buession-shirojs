@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { camelCase } from 'lodash'
 import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 import typescript2 from '@rollup/plugin-typescript'
@@ -7,7 +8,6 @@ import commonjs from '@rollup/plugin-commonjs'
 import eslint from '@rollup/plugin-eslint'
 import replace from '@rollup/plugin-replace'
 import { terser } from 'rollup-plugin-terser'
-import { camelCase } from 'lodash'
 
 const pkg = require('./package.json');
 const base = path.resolve(__dirname, '.');
@@ -30,12 +30,12 @@ const bannerComment = `/*!
 const filename = pkg.alias;
 
 const externals = ['window'];
-const externalExcludes = [];
 
 const plugins = [
-  eslint(),
+  eslint('./.eslintrc.js'),
   resolve({
-    external: []
+    browser: true,
+    external: externals
   }),
   commonjs(),
   typescript2({
@@ -44,6 +44,7 @@ const plugins = [
   replace({
     preventAssignment: true,
     values: {
+      __NAME__: pkg.alias,
       __VERSION__: pkg.version
     }
   }), 
@@ -57,7 +58,7 @@ const plugins = [
 // The base rollup configuration
 const baseConfig = {
   input: path.resolve(src, 'index.ts'),
-  external: externals.filter(dep => !externalExcludes.includes(dep)),
+  external: externals,
   plugins: plugins
 };
 const minifyConfig = {

@@ -1,6 +1,6 @@
 import { isUndefinedOrNull } from '../utils/common';
 
-export interface PrincipalObject {
+export interface PrincipalPlainObject {
 
 	/**
 	 * 用户 ID

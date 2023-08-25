@@ -1,6 +1,6 @@
 import { ALL_PERMISSION } from './core/constants'
-import { PrincipalObject, Principal, DefaultPrincipal } from './core/principal'
-import { hasAny, hasAll } from './utils/common'
+import { PrincipalPlainObject, Principal, DefaultPrincipal } from './core/principal'
+import { has, hasAny, hasAll } from './utils/common'
 
 export interface IShiro {
 	
@@ -118,8 +118,8 @@ export class Shiro implements IShiro {
 
 	private readonly principal: Principal;
 
-	constructor(principal: Principal | PrincipalObject) {
-		const $principal = principal as PrincipalObject;
+	constructor(principal: Principal | PrincipalPlainObject) {
+		const $principal = principal as PrincipalPlainObject;
 
 		if (typeof $principal.id === 'string' && Array.isArray($principal.roles) && Array.isArray($principal.permissions)) {
 			this.principal = new DefaultPrincipal($principal.id, $principal.roles, $principal.permissions);
@@ -173,7 +173,7 @@ export class Shiro implements IShiro {
 	 * @return 用户是否具备某角色
 	 */
 	hasRole(roleName: string): boolean {
-		return this.isAuthenticated() && hasAny(this.principal.getRoles(), roleName);
+		return this.isAuthenticated() && has(this.principal.getRoles(), roleName);
 	}
 
 	/**
@@ -197,17 +197,7 @@ export class Shiro implements IShiro {
 	 * @return 用户是否具有以下任意一个角色
 	 */
 	hasAnyRole(roleNames: string[]): boolean {
-		if (this.isAuthenticated() == false) {
-			return false;
-		}
-
-		for (let i = 0; i < roleNames.length; i++) {
-			if (hasAny(this.principal.getRoles(), roleNames[i])) {
-				return true;
-			}
-		}
-
-		return false;
+		return this.isAuthenticated() && hasAny(this.principal.getRoles(), roleNames);
 	}
 
 	/**
@@ -231,7 +221,7 @@ export class Shiro implements IShiro {
 	 * @return 用户是否具备某权限
 	 */
 	hasPermission(permission: string): boolean {
-		return this.isAuthenticated() && (hasAny(this.principal.getPermissions(), permission) || hasAny(this.principal.getPermissions(), ALL_PERMISSION));
+		return this.isAuthenticated() && hasAny(this.principal.getPermissions(), [ALL_PERMISSION, permission]);
 	}
 
 	/**
@@ -255,21 +245,7 @@ export class Shiro implements IShiro {
 	 * @return 用户是否具有以下任意一个权限
 	 */
 	hasAnyPermission(permissions: string[]): boolean {
-		if (this.isAuthenticated() == false) {
-			return false;
-		}
-
-		if (hasAny(this.principal.getPermissions(), ALL_PERMISSION)) {
-			return true;
-		}
-
-		for (let i = 0; i < permissions.length; i++) {
-			if (hasAny(this.principal.getPermissions(), permissions[i])) {
-				return true;
-			}
-		}
-
-		return false;
+		return this.isAuthenticated() && hasAny(this.principal.getPermissions(), (permissions || []).concat(ALL_PERMISSION));
 	}
 
 	/**
@@ -281,7 +257,7 @@ export class Shiro implements IShiro {
 	 * @return 用户是否具有以下所有权限
 	 */
 	hasPermissionsAll(permissions: string[]): boolean {
-		return this.isAuthenticated() && (hasAny(this.principal.getPermissions(), ALL_PERMISSION) || hasAll(this.principal.getPermissions(), permissions));
+		return this.isAuthenticated() && (has(this.principal.getPermissions(), ALL_PERMISSION) || hasAll(this.principal.getPermissions(), permissions));
 	}
 
 }
