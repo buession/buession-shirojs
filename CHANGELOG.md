@@ -1,5 +1,13 @@
 # 更新日志
 
+
+## [v1.2.2](https://github.com/buession/buession-shiro/releases/tag/1.2.2)（2024-01-05）
+
+### ⭐ 新特性
+
+- 新增方法 hasAllPermissions 判断是否具有所有的权限
+
+
 ## [v1.2.1](https://github.com/buession/buession-shiro/releases/tag/1.2.1)（2023-08-25）
 
 ### 🐞 BUG 修复

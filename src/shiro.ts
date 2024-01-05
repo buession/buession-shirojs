@@ -3,7 +3,7 @@ import { PrincipalPlainObject, Principal, DefaultPrincipal } from './core/princi
 import { has, hasAny, hasAll } from './utils/common'
 
 export interface IShiro {
-	
+
 	/**
 	 * 验证是否为已认证通过的用户，不包含已记住的用户，这是与 isUser 标签方法的区别所在
 	 * 
@@ -101,6 +101,16 @@ export interface IShiro {
 	 * @return 用户是否具有以下任意一个权限
 	 */
 	hasAnyPermission(permissions: string[]): boolean;
+
+	/**
+	 * 验证用户是否具有以下所有权限
+	 *
+	 * @param permissions
+	 * 		权限列表
+	 *
+	 * @return 用户是否具有以下所有权限
+	 */
+	hasAllPermissions(permissions: string[]): boolean;
 
 	/**
 	 * 验证用户是否具有以下所有权限
@@ -256,8 +266,20 @@ export class Shiro implements IShiro {
 	 *
 	 * @return 用户是否具有以下所有权限
 	 */
-	hasPermissionsAll(permissions: string[]): boolean {
+	hasAllPermissions(permissions: string[]): boolean {
 		return this.isAuthenticated() && (has(this.principal.getPermissions(), ALL_PERMISSION) || hasAll(this.principal.getPermissions(), permissions));
+	}
+
+	/**
+	 * 验证用户是否具有以下所有权限
+	 *
+	 * @param permissions
+	 * 		权限列表
+	 *
+	 * @return 用户是否具有以下所有权限
+	 */
+	hasPermissionsAll(permissions: string[]): boolean {
+		return this.hasAllPermissions(permissions);
 	}
 
 }
