@@ -1,7 +1,7 @@
 {
   "name": "@buession/shiro",
   "alias": "shiro",
-  "version": "v1.2.2",
+  "version": "v2.0.0",
   "description": "A security framework for JavaScript or TypeScript.",
   "homepage": "https://shirojs.buession.com/",
   "author": {
@@ -28,8 +28,8 @@
     "permission",
     "security"
   ],
-  "main": "dist/shiro.cjs.js",
-  "module": "dist/shiro.esm.js",
+  "main": "lib/index.js",
+  "module": "es/pindex.js",
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
   "unpkg": "dist/shiro.min.js",
