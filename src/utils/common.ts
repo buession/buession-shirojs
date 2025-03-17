@@ -9,7 +9,7 @@ export const isUndefined = (obj: any): boolean => {
 }
 
 export const isUndefinedOrNull = (obj: any): boolean => {
-	return isUndefined(obj) || isNull(obj);
+	return isUndefined(obj) === true || isNull(obj) === true;
 }
 
 export const has = (data: Oun<string[]>, value: any): boolean => {

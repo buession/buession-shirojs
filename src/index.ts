@@ -1,6 +1,6 @@
 import { Shiro } from './shiro';
-import { ALL_PERMISSION } from './core/constants';
-import { PrincipalPlainObject, Principal } from './core/principal';
+import { ALL_PERMISSION } from './core';
+import type { PrincipalPlainObject, Principal } from './core';
 
 export {
 	ALL_PERMISSION,

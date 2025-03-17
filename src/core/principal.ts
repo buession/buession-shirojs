@@ -126,7 +126,7 @@ export class DefaultPrincipal implements Principal {
   }
 
   public setRoles (roleNames: string[]): void {
-    this.roles = isUndefinedOrNull(roleNames) ? [] : roleNames;
+    this.roles = isUndefinedOrNull(roleNames) === true ? [] : roleNames;
   }
 
   public addRole (roleName: string): void {
@@ -135,9 +135,7 @@ export class DefaultPrincipal implements Principal {
 
   public addRoles (roleNames: string[]): void {
     if (isUndefinedOrNull(roleNames) === false) {
-      roleNames.forEach((roleName: string) => {
-        this.roles.push(roleName);
-      });
+			this.roles = this.roles.concat(roleNames);
     }
   }
 
@@ -146,7 +144,7 @@ export class DefaultPrincipal implements Principal {
   }
 
   public setPermissions (permissions: string[]): void {
-    this.permissions = isUndefinedOrNull(permissions) ? [] : permissions;
+    this.permissions = isUndefinedOrNull(permissions) === true ? [] : permissions;
   }
 
   public addPermission (permission: string): void {
@@ -155,9 +153,7 @@ export class DefaultPrincipal implements Principal {
 
   public addPermissions (permissions: string[]): void {
     if (isUndefinedOrNull(permissions) === false) {
-      permissions.forEach((permission: string) => {
-        this.permissions.push(permission);
-      });
+			this.permissions = this.roles.concat(permissions);
     }
   }
 

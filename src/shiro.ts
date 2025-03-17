@@ -1,5 +1,5 @@
-import { ALL_PERMISSION } from './core/constants'
-import { PrincipalPlainObject, Principal, DefaultPrincipal } from './core/principal'
+import { ALL_PERMISSION, DefaultPrincipal } from './core'
+import type { PrincipalPlainObject, Principal } from './core'
 import { has, hasAny, hasAll } from './utils/common'
 
 export interface IShiro {
