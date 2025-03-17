@@ -1,0 +1,13 @@
+{
+  "title": "Buession ShiroJS",
+  "keywords": "buession JavaScript TypeScript Security authentication authorization permission shiro privilege",
+  "description": "A security framework for JavaScript or TypeScript. ",
+  "author": "buession",
+  "theme": "demo",
+  "root": "src",
+  "pluginsConfig": {
+    "import-asset": {
+      "js": ["/js/stat.js"]
+    }
+  }
+}
