@@ -1,4 +1,4 @@
-import { Oun } from '@/core/types';
+import { Oun } from '../core/types';
 
 export const isNull = (obj: any): boolean => {
 	return obj === null;
