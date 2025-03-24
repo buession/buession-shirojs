@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "target": "es5",
+    "target": "es6",
     "module": "esnext",
     "strict": true,
     "alwaysStrict": true,
@@ -11,25 +11,22 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "strictNullChecks": false,
     "allowSyntheticDefaultImports": true,
-    "noEmit": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": false,
+    "noEmit": false,
     "noEmitOnError": true,
     "noEmitHelpers": true,
     "importHelpers": true,
     "preserveSymlinks": true,
     "rootDir": "./src",
     "outDir": "./dist",
-    "declaration": false,
+    "declaration": true,
     "sourceMap": true,
     "allowJs": true,
-    "types": [
-      "node"
-    ],
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
+    "stripInternal": true,
     "lib": [
       "es5",
       "es6",

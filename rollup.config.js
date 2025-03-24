@@ -1,13 +1,13 @@
 import fs from 'fs'
 import path from 'path'
-import { camelCase } from 'lodash'
+import { camelCase } from 'lodash-es'
 import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 import typescript2 from '@rollup/plugin-typescript'
 import commonjs from '@rollup/plugin-commonjs'
 import eslint from '@rollup/plugin-eslint'
 import replace from '@rollup/plugin-replace'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 
 const pkg = require('./package.json');
 const base = path.resolve(__dirname, '.');

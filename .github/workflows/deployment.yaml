@@ -1,7 +1,7 @@
 name: Docs CI
 
 on:
-  push:
+  release:
     branches:
       - master
 
@@ -28,7 +28,6 @@ jobs:
           ydoc build
         env:
           CI: true
-
       - name: 3. script deploy
         env:
           DEPLOY_ACCESS_TOKEN: ${{ secrets.DEPLOY_ACCESS_TOKEN }}

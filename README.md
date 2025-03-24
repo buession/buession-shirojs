@@ -110,4 +110,4 @@ export default defineComponent({
 
 ## License
 
-[MIT License](https://github.com/buession/buession-shirojs/blob/master/LICENSE) © 2020-2023
+[MIT License](https://github.com/buession/buession-shirojs/blob/master/LICENSE) © 2020-2025

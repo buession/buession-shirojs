@@ -1,6 +1,13 @@
 .DS_Store
+package-lock.json
+yarn.lock
+tsconfig.types.tsbuildinfo
+
 node_modules
 /types
+/typings
+/es
+/lib
 /dist
 
 
