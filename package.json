@@ -38,6 +38,8 @@
   "unpkg": "dist/shiro.min.js",
   "files": [
     "types/",
+    "es/",
+    "lib/",
     "dist/"
   ],
   "devDependencies": {
