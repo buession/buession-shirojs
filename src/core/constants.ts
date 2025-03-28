@@ -1,1 +1,1 @@
-export const ALL_PERMISSION = '*:*';
+export const ALL_PERMISSION = "*:*";

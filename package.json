@@ -21,7 +21,7 @@
     "compile": "node build/cli/run.js compile",
     "dist": "node --max_old_space_size=8192 build/cli/run.js dist",
     "tsc": "tsc --noEmit && tsc -b ./tsconfig.types.json",
-    "lint": "eslint -c ./.eslintrc.js './{src}/**/*.{js,ts,jsx,tsx}'",
+    "lint": "eslint --fix --ext .jsx,.js,.ts,.tsx ./src",
     "codecov": "codecov",
     "release": "node --max_old_space_size=8192 build/cli/run.js release"
   },
