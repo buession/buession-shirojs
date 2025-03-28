@@ -54,7 +54,7 @@ jobs:
           key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
 
       - name: Generate coverage report
-        run: npm lint
+        run: npm run lint
         env:
           COVERAGE: "true"
 
