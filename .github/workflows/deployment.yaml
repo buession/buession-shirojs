@@ -11,15 +11,16 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [22.x]
 
     steps:
-      - uses: actions/checkout@v1
-      - name: 1. set environment
-        uses: actions/setup-node@v1
+      - name: 1. Checkout
+        uses: actions/checkout@v2
+      - name: 2. Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: 2. install dep
+      - name: 3. Install dependencies and build 🔧
         run: |
           cd site
           rm -rf node_modules
@@ -28,12 +29,13 @@ jobs:
           ydoc build
         env:
           CI: true
-      - name: 3. script deploy
+      - name: 4. script deploy
         env:
           DEPLOY_ACCESS_TOKEN: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
           PUBLISH_BRANCH: site
           PUBLISH_DIR: ./_site
           CNAME: shirojs.buession.com
         run: |
+          cd site
           chmod +x ./scripts/deploy.sh
           bash ./scripts/deploy.sh
