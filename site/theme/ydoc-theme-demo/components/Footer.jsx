@@ -29,3 +29,8 @@
 			</div>
 	</div>
 </footer>
+<div
+	dangerouslySetInnerHTML={{
+		__html: `<!-- Generate at ${(new Date()).toDateString()} -->`,
+	}}
+/>

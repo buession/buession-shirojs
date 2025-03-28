@@ -1,6 +1,11 @@
 # 更新日志
 
 
+## [v2.0.2](https://github.com/buession/buession-shiro/releases/tag/2.0.2)（2025-03-28）
+
+### ⭐ 新特性
+
+
 ## [v1.2.2](https://github.com/buession/buession-shiro/releases/tag/1.2.2)（2024-01-05）
 
 ### ⭐ 新特性
