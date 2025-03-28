@@ -1,7 +1,7 @@
 {
   "name": "@buession/shiro",
   "alias": "shiro",
-  "version": "v2.0.1",
+  "version": "v2.0.2",
   "description": "A security framework for JavaScript or TypeScript.",
   "homepage": "https://shirojs.buession.com/",
   "author": {

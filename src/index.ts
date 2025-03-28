@@ -1,12 +1,7 @@
 import { Shiro } from './shiro';
-import { ALL_PERMISSION } from './core';
-import type { PrincipalPlainObject, Principal } from './core';
 
-export {
-	ALL_PERMISSION,
-	PrincipalPlainObject,
-	Principal,
-	Shiro
-}
+export { Shiro } from './shiro';
+export { ALL_PERMISSION } from './core';
+export type { PrincipalPlainObject, Principal } from './core';
 
 export default Shiro;
