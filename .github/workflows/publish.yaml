@@ -28,7 +28,7 @@ jobs:
       - name: 5. Generate js 🔧
         run: npm run dist
       - name: 6. Generate types 🔧
-        run: npm run tcs
+        run: npm run tsc
       - name: 7. Publish package on NPM 📦
         run: yarn publish --access public
         env:
