@@ -2,11 +2,11 @@
 banner:
   name: '一款 JavaScript/TypeScript 权限框架'
   desc: '一款基于 Apache Shiro 核心思想 JavaScript/TypeScript 权限框架，旨在提供便捷的、统一的、可靠的权限前端权限验证功能。在业务开发中省去的那些“脏活累活”，专注于业务核心的开发。'
-  btns: 
+  btns:
     - { name: '开 始', href: '/docs/quickstart.html', primary: true }
     - { name: 'Github >', href: 'https://github.com/buession/buession-shirojs' }
-  caption: '当前版本: v2.0.2'
-features: 
+  caption: '当前版本: v2.0.3'
+features:
   - { name: '优雅', desc: '旨在提供便捷的、统一的、可靠的权限前端权限验证工具，拥有完善的文档和高可读性的源码' }
   - { name: '易用', desc: '参考 Apache Shiro 官方 JspTag API 设计，拥有和原生 JspTag 相同的 API，极大的减少学习成本' }
   - { name: '简洁', desc: '与其它框架无耦合，高内聚低耦合' }
