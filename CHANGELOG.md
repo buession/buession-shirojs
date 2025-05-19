@@ -1,6 +1,13 @@
 # 更新日志
 
 
+## [v2.0.3](https://github.com/buession/buession-shiro/releases/tag/2.0.3)（2025-05-19）
+
+### 🐞 BUG 修复
+
+- 修复 DefaultPrincipal.addPermissions 批量添加用户权限时，错误的添加为角色的 BUG
+
+
 ## [v2.0.2](https://github.com/buession/buession-shiro/releases/tag/2.0.2)（2025-03-28）
 
 ### ⭐ 新特性
