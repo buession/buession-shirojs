@@ -23,7 +23,7 @@ export interface Principal {
 
 	/**
 	 * 返回用户 ID
-	 * 
+	 *
 	 * @return 用户 ID
 	 */
 	getId(): string,
@@ -38,7 +38,7 @@ export interface Principal {
 
 	/**
 	 * 返回用户角色名称列表
-	 * 
+	 *
 	 * @return 用户角色名称列表
 	 */
 	getRoles(): string[],
@@ -69,7 +69,7 @@ export interface Principal {
 
 	/**
 	 * 返回用户权限列表
-	 * 
+	 *
 	 * @return 用户权限列表
 	*/
 	getPermissions(): string[],
@@ -126,7 +126,7 @@ export class DefaultPrincipal implements Principal {
   }
 
   public setRoles (roleNames: string[]): void {
-    this.roles = isUndefinedOrNull(roleNames) === true ? [] : roleNames;
+    this.roles = Array.isArray(roleNames) ? roleNames : [];
   }
 
   public addRole (roleName: string): void {
@@ -134,7 +134,7 @@ export class DefaultPrincipal implements Principal {
   }
 
   public addRoles (roleNames: string[]): void {
-    if (isUndefinedOrNull(roleNames) === false) {
+    if (Array.isArray(roleNames)) {
 			this.roles = this.roles.concat(roleNames);
     }
   }
@@ -144,7 +144,7 @@ export class DefaultPrincipal implements Principal {
   }
 
   public setPermissions (permissions: string[]): void {
-    this.permissions = isUndefinedOrNull(permissions) === true ? [] : permissions;
+    this.permissions = Array.isArray(permissions) ? permissions : [];
   }
 
   public addPermission (permission: string): void {
@@ -152,8 +152,8 @@ export class DefaultPrincipal implements Principal {
   }
 
   public addPermissions (permissions: string[]): void {
-    if (isUndefinedOrNull(permissions) === false) {
-			this.permissions = this.roles.concat(permissions);
+    if (Array.isArray(permissions)) {
+			this.permissions = this.permissions.concat(permissions);
     }
   }
 
